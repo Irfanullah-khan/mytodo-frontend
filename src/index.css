@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+  --color-neon-bg: #0a0a0a;
+  --color-neon-primary: #ff00ff;
+  --color-neon-secondary: #00ffff;
+  --color-neon-accent: #7000ff;
+}
+
+/* Base resets */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Neon Theme Global Overrides */
+[data-theme='neon'] {
+  background-color: var(--color-neon-bg);
+  color: #fff;
+}
+
+[data-theme='neon'] .btn-primary {
+  background-color: transparent;
+  border: 2px solid var(--color-neon-primary);
+  color: var(--color-neon-primary);
+  box-shadow: 0 0 10px var(--color-neon-primary);
+  transition: all 0.3s ease;
+}
+[data-theme='neon'] .btn-primary:hover {
+  background-color: var(--color-neon-primary);
+  color: #000;
+  box-shadow: 0 0 20px var(--color-neon-primary);
+}
+
+[data-theme='neon'] .card {
+  background-color: #111;
+  border: 1px solid var(--color-neon-secondary);
+  box-shadow: 0 0 5px var(--color-neon-secondary);
+}
+
+/* 
+  Tailwind v4 Variable Overrides for Neon Mode.
+  Since Neon mode also enables 'dark' class, we override the dark mode colors 
+  to use our Neon palette.
+*/
+@layer base {
+  [data-theme='neon'] {
+    /* Backgrounds: Turn standard dark grays into pitch black/neon-black */
+    --color-gray-900: var(--color-neon-bg); 
+    --color-gray-800: #050505; /* Header/Cards very dark */
+    
+    /* Borders: Turn standard borders into Cyan */
+    --color-gray-700: var(--color-neon-secondary);
+    --color-gray-600: var(--color-neon-secondary);
+
+    /* Primary Actions: Turn Blue into Neon Pink */
+    --color-blue-600: var(--color-neon-primary);
+    --color-blue-700: #d600d6; /* Hover state */
+    
+    /* Text overrides just in case */
+    --color-gray-300: #e0e0e0;
+  }
+}
