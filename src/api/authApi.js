@@ -1,14 +1,27 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api/auth';
+// const API_URL = 'http://localhost:5000/api/auth';
+
+const API_URL = `${import.meta.env.VITE_API_BASE_URL}/api/todos`;
+
+
+
+
+
 
 export const signup = async (userData) => {
-    const response = await axios.post(`${API_URL}/signup`, userData);
+    // const response = await axios.post(`${API_URL}/signup`, userData);
+  const response=   axios.post(
+  `${import.meta.env.VITE_API_BASE_URL}/api/auth/signup`,
+  userData
+);
+
     return response.data;
 };
 
 export const login = async (userData) => {
     const response = await axios.post(`${API_URL}/login`, userData);
+    
     return response.data;
 };
 
@@ -40,5 +53,6 @@ export const updateProfile = async (userData) => {
         }
     };
     const response = await axios.put(`${API_URL}/update`, userData, config);
+    
     return response.data;
 };
