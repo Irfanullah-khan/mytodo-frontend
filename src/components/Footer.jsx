@@ -35,9 +35,10 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <div className="mt-8 text-center text-xs text-gray-400 dark:text-gray-500 flex items-center justify-center gap-1">
-                    Made with <FaHeart className="text-red-500" /> by Irfanullah
+                 <div className="mt-8 text-center text-xs text-gray-400 dark:text-gray-500">
+                     <span className="font-semibold">Crafted by Irfanullah</span>
                 </div>
+                
             </div>
         </footer>
     );
